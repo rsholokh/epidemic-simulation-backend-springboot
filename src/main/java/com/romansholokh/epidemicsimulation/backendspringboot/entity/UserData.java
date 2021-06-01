@@ -12,15 +12,15 @@ import javax.persistence.*;
 @EqualsAndHashCode
 public class UserData {
 
-    private Long id;
+    private long id;
     private String simulationName;
-    private Long populationSize;
-    private Long initialNumberOfInfected;
-    private Long infectiousness;
-    private Long mortality;
-    private Long daysUntilRecovery;
-    private Long daysUntilDeath;
-    private Long simulationDays;
+    private long populationSize;
+    private long initialNumberOfInfected;
+    private long infectiousness;
+    private long mortality;
+    private long daysUntilRecovery;
+    private long daysUntilDeath;
+    private long simulationDays;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
