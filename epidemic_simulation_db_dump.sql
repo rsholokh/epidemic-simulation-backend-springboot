@@ -18,13 +18,13 @@ USE `epidemic_simulation_db`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `genereted_values`
+-- Table structure for table `generated_values`
 --
 
-DROP TABLE IF EXISTS `genereted_values`;
+DROP TABLE IF EXISTS `generated_values`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `genereted_values` (
+CREATE TABLE `generated_values` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `day` bigint NOT NULL,
   `number_of_infected` bigint NOT NULL,
@@ -39,12 +39,12 @@ CREATE TABLE `genereted_values` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `genereted_values`
+-- Dumping data for table `generated_values`
 --
 
-LOCK TABLES `genereted_values` WRITE;
-/*!40000 ALTER TABLE `genereted_values` DISABLE KEYS */;
-/*!40000 ALTER TABLE `genereted_values` ENABLE KEYS */;
+LOCK TABLES `generated_values` WRITE;
+/*!40000 ALTER TABLE `generated_values` DISABLE KEYS */;
+/*!40000 ALTER TABLE `generated_values` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
