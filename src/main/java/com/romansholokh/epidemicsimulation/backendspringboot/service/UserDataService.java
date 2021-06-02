@@ -13,8 +13,7 @@ public class UserDataService {
 
     private final UserDataRepository userDataRepository;
 
-    public UserData add(UserData userData)
-    {
+    public UserData add(UserData userData) {
         return userDataRepository.save(userData);
     }
 }
