@@ -40,4 +40,23 @@ public class UserDataController {
 
         return ResponseEntity.ok(userData);
     }
+
+    @PutMapping("simulate/user-data-id/{id}")
+    public ResponseEntity simulateByUserDataId(@PathVariable Long id) {
+        if (id == null || id <= 0) {
+            return new ResponseEntity("missed param or invalid format: id MUST be greater than 0", HttpStatus.NOT_ACCEPTABLE);
+        } else if (!userDataService.existById(id)) {
+            return new ResponseEntity("id = " + id + " does not exist", HttpStatus.NOT_ACCEPTABLE);
+        }
+        UserData userData = null;
+        Optional<UserData> optional = userDataService.getById(id);
+        if (optional.isPresent()) {
+            userData = optional.get();
+            userDataService.simulateByUserDataId(userData);
+        } else {
+            return new ResponseEntity("id = " + id + " not found", HttpStatus.NOT_ACCEPTABLE);
+        }
+
+        return ResponseEntity.ok("simulation id = " + id + " completed successfully");
+    }
 }
