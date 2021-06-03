@@ -3,10 +3,12 @@ package com.romansholokh.epidemicsimulation.backendspringboot.entity;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 
 @Entity
+@Component
 @NoArgsConstructor
 @Setter
 @EqualsAndHashCode
@@ -18,7 +20,7 @@ public class GeneratedValues {
     private long numberOfHealthySusceptibleToInfection;
     private long deathToll;
     private long numberOfRecoveredAndAcquiredImmunity;
-    private UserData userDataByUserDataId;
+    private UserData userData;
 
     @Id
     @Column(name = "id", nullable = false)
@@ -58,8 +60,8 @@ public class GeneratedValues {
 
     @ManyToOne
     @JoinColumn(name = "user_data_id", referencedColumnName = "id", nullable = false)
-    public UserData getUserDataByUserDataId() {
-        return userDataByUserDataId;
+    public UserData getUserData() {
+        return userData;
     }
 
 }
