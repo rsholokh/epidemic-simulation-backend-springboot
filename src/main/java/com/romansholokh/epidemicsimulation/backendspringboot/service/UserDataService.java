@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 @Service
 @Transactional
 @AllArgsConstructor
@@ -15,5 +17,9 @@ public class UserDataService {
 
     public UserData add(UserData userData) {
         return userDataRepository.save(userData);
+    }
+
+    public Optional<UserData> getById(Long id) {
+        return userDataRepository.findById(id);
     }
 }

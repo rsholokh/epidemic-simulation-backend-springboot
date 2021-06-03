@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @RestController
 @AllArgsConstructor
 @RequestMapping("/user-data")
@@ -24,5 +26,18 @@ public class UserDataController {
         }
 
         return ResponseEntity.ok(userDataService.add(userData));
+    }
+
+    @GetMapping("/id/{id}")
+    public ResponseEntity<UserData> getById(@PathVariable Long id) {
+        UserData userData = null;
+        Optional<UserData> optional = userDataService.getById(id);
+        if (optional.isPresent()) {
+            userData = optional.get();
+        } else {
+            return new ResponseEntity("id = " + id + " not found", HttpStatus.NOT_ACCEPTABLE);
+        }
+
+        return ResponseEntity.ok(userData);
     }
 }
