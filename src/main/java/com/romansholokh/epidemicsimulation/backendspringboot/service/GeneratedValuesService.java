@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @Transactional
 @AllArgsConstructor
@@ -15,5 +17,9 @@ public class GeneratedValuesService {
 
     public GeneratedValues add(GeneratedValues generatedValues) {
         return generatedValuesRepository.save(generatedValues);
+    }
+
+    public void addAll(List<GeneratedValues> generatedValuesList) {
+        generatedValuesRepository.saveAll(generatedValuesList);
     }
 }
