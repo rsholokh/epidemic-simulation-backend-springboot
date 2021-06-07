@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -21,5 +22,9 @@ public class GeneratedValuesService {
 
     public void addAll(List<GeneratedValues> generatedValuesList) {
         generatedValuesRepository.saveAll(generatedValuesList);
+    }
+
+    public Optional<GeneratedValues> getById(Long id) {
+        return generatedValuesRepository.findById(id);
     }
 }
