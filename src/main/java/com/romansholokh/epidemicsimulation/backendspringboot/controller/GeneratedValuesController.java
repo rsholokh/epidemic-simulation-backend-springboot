@@ -39,4 +39,17 @@ public class GeneratedValuesController {
         return ResponseEntity.ok(generatedValues);
     }
 
+    @GetMapping("user-data/id/{id}")
+    public ResponseEntity getAllByUserDataId(@PathVariable long id) {
+
+        if (!generatedValuesService.existsByUserDataId(id)) {
+            return new ResponseEntity("id = " + id + " not found", HttpStatus.NOT_ACCEPTABLE);
+        }
+
+        List<GeneratedValues> generatedValuesList = generatedValuesService.getAllByUserDataId(id);
+
+        return ResponseEntity.ok(generatedValuesList);
+    }
+
+
 }

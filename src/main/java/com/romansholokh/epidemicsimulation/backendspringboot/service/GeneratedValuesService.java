@@ -27,4 +27,14 @@ public class GeneratedValuesService {
     public Optional<GeneratedValues> getById(Long id) {
         return generatedValuesRepository.findById(id);
     }
+
+    public List<GeneratedValues> getAllByUserDataId(Long id) {
+        return generatedValuesRepository.findAllByUserDataId(id);
+
+    }
+
+    public boolean existsByUserDataId(long id) {
+        return generatedValuesRepository.existsByUserDataId(id);
+
+    }
 }
