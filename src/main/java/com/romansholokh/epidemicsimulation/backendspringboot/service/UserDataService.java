@@ -32,4 +32,8 @@ public class UserDataService {
     public void simulateByUserDataId(UserData userData){
         simulationEngine.simulating(userData);
     }
+
+    public void deleteById(Long id) {
+        userDataRepository.deleteById(id);
+    }
 }

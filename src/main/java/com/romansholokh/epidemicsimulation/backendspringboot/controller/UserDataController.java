@@ -3,6 +3,7 @@ package com.romansholokh.epidemicsimulation.backendspringboot.controller;
 import com.romansholokh.epidemicsimulation.backendspringboot.entity.UserData;
 import com.romansholokh.epidemicsimulation.backendspringboot.service.UserDataService;
 import lombok.AllArgsConstructor;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -72,5 +73,16 @@ public class UserDataController {
         }
 
         return ResponseEntity.ok("simulation id = " + id + " completed successfully");
+    }
+
+    @DeleteMapping("/delete/id/{id}")
+    public ResponseEntity deleteById(@PathVariable Long id) {
+        try {
+            userDataService.deleteById(id);
+        } catch (EmptyResultDataAccessException e) {
+            return new ResponseEntity("id = " + id + " not found", HttpStatus.NOT_ACCEPTABLE);
+        }
+
+        return ResponseEntity.ok("User Data with id = " + id + " was deleted");
     }
 }
