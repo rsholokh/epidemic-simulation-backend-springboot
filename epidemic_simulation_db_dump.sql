@@ -34,7 +34,7 @@ CREATE TABLE `generated_values` (
   `user_data_id` bigint NOT NULL,
   PRIMARY KEY (`id`),
   KEY `user_data_id_fk_idx` (`user_data_id`),
-  CONSTRAINT `user_data_id_fk` FOREIGN KEY (`user_data_id`) REFERENCES `user_data` (`id`)
+  CONSTRAINT `user_data_id_fk` FOREIGN KEY (`user_data_id`) REFERENCES `user_data` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
