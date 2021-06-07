@@ -60,7 +60,7 @@ CREATE TABLE `user_data` (
   `population_size` bigint NOT NULL,
   `initial_number_of_infected` bigint NOT NULL,
   `infectiousness` bigint NOT NULL,
-  `mortality` bigint NOT NULL,
+  `mortality` double NOT NULL,
   `days_until_recovery` bigint NOT NULL,
   `days_until_death` bigint NOT NULL,
   `simulation_days` bigint NOT NULL,

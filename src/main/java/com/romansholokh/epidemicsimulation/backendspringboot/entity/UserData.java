@@ -17,7 +17,7 @@ public class UserData {
     private long populationSize;
     private long initialNumberOfInfected;
     private long infectiousness;
-    private long mortality;
+    private double mortality;
     private long daysUntilRecovery;
     private long daysUntilDeath;
     private long simulationDays;
@@ -55,20 +55,20 @@ public class UserData {
 
     @Basic
     @Column(name = "mortality", nullable = false)
-    public long getMortality() {
+    public double getMortality() {
         return mortality;
-    }
-
-    @Basic
-    @Column(name = "days_until_recovery", nullable = false)
-    public long getDaysUntilRecovery() {
-        return daysUntilRecovery;
     }
 
     @Basic
     @Column(name = "days_until_death", nullable = false)
     public long getDaysUntilDeath() {
         return daysUntilDeath;
+    }
+
+    @Basic
+    @Column(name = "days_until_recovery", nullable = false)
+    public long getDaysUntilRecovery() {
+        return daysUntilRecovery;
     }
 
     @Basic
