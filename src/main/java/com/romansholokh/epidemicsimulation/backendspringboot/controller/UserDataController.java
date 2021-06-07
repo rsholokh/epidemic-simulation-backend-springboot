@@ -5,8 +5,13 @@ import com.romansholokh.epidemicsimulation.backendspringboot.service.UserDataSer
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -18,11 +23,20 @@ public class UserDataController {
     private final UserDataService userDataService;
 
     @PostMapping("/add")
-    public ResponseEntity<UserData> add(@RequestBody UserData userData) {
-        if (userData.getId() != 0) {
-            return new ResponseEntity("redundant param: id MUST NOT exist or MUST be 0", HttpStatus.NOT_ACCEPTABLE);
-        } else if (userData.getSimulationName() == null || userData.getSimulationName().trim().length() == 0) {
-            return new ResponseEntity("missed param: simulationName", HttpStatus.NOT_ACCEPTABLE);
+    public ResponseEntity<UserData> add(@RequestBody @Valid UserData userData, BindingResult bindingResult) {
+
+        if (bindingResult.hasErrors()) {
+
+            List<FieldError> errors = bindingResult.getFieldErrors();
+
+            List<String> errorMessages = new ArrayList<>();
+
+            for (FieldError error : errors) {
+                errorMessages.add(error.getDefaultMessage());
+            }
+
+            return new ResponseEntity(errorMessages, HttpStatus.NOT_ACCEPTABLE);
+
         }
 
         return ResponseEntity.ok(userDataService.add(userData));

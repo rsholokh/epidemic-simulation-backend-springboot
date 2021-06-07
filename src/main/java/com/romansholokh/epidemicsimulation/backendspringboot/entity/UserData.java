@@ -5,6 +5,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 @NoArgsConstructor
@@ -13,13 +15,21 @@ import javax.persistence.*;
 public class UserData {
 
     private long id;
+    @NotEmpty(message = "simulationName should not be empty")
     private String simulationName;
+    @Min(value = 1, message = "populationSize should be greater than 0")
     private long populationSize;
+    @Min(value = 1, message = "initialNumberOfInfected should be greater than 0")
     private long initialNumberOfInfected;
+    @Min(value = 1, message = "infectiousness should be greater than 0")
     private long infectiousness;
+    @Min(value = 0, message = "mortality should be greater than 0")
     private double mortality;
+    @Min(value = 1, message = "daysUntilRecovery should be greater than 0")
     private long daysUntilRecovery;
+    @Min(value = 1, message = "daysUntilDeath should be greater than 0")
     private long daysUntilDeath;
+    @Min(value = 1, message = "simulationDays should be greater than 0")
     private long simulationDays;
 
     @Id
